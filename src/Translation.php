@@ -168,16 +168,16 @@ class Translation
 
     /**
      * Sets a default locale
-     * @param string $lang
+     * @param string $locale
      * @return $this|string
      */
-    public function defaultLocale(string $lang = null)
+    public function defaultLocale(string $locale = null)
     {
-        if (!isset($lang)) {
+        if (!isset($locale)) {
             return $this->default_locale;
         }
 
-        $this->default_locale = $lang;
+        $this->default_locale = $locale;
         return $this;
     }
 

@@ -5,11 +5,11 @@ Laravel CSV translation (a.k.a LCT) offers a different approach to translate str
 ## Why ##
 By default, Laravel provides two ways of storing translations - PHP arrays and JSON strings.
 
-**The bad with PHP arrays:**
+**Disadvantages of PHP arrays:**
 
 Executable code requires translators to properly escape characters, use valid PHP syntax, otherwise you get a fatal error. Message IDs could be a nightmare when you develop large applications.
 
-**The bad with JSON**
+**Disadvantages of JSON**
 
 Although JSON could be considered as a safe format, translators still have to properly escape characters and deal with the non-human-friendly format. No message IDs, but now you cannot divide your translations, which means all the strings (thousands and thousands for large apps) are loaded in memory.
 
@@ -48,11 +48,11 @@ Let's see what happens when translating `Hello :user` into ukrainian language
 
 First, LCT will try to find and parse a CSV file for the current context. We have specified "user" so the expected file is `resources/lang/uk/context/user.csv`.
 
-Once found and parsed, LCT checks `Hello :user` key in an array of translations. If the key and its value (translation) is set, further processing is stopped and we see the translated string `Привіт, Юра`
+Once found and parsed, LCT checks `Hello :user` key in the array of translations. If the key is set, further processing is stopped and we see the translated string.
 
-If the context file is not found OR doesn't contain `Hello :user` key, LCT will check  "parent" file `resources/lang/uk/context/_uk.csv`, which is a working copy of `resources/lang/uk/_uk.csv` (has been copied automatically during translator initialization)
+Otherwise, LCT will check "parent" file `resources/lang/uk/context/_uk.csv`, which is a working copy of `resources/lang/uk/_uk.csv` (has been copied automatically during translator initialization)
 
-If the parent file doesn't contain `Hello :user` OR its translation isn't set, LCT loads the distributed translation file `resources/lang/uk/uk.csv` (contains all translations for your app) and appends `Hello :user` to `resources/lang/uk/context/user.csv` and `resources/lang/uk/context/_uk.csv` so you can translate it later using a spreadsheet editor.
+If the parent file doesn't contain `Hello :user`, LCT loads the distributed translation file `resources/lang/uk/uk.csv` (contains all translations for your app) and appends `Hello :user` key to `resources/lang/uk/context/user.csv` and `resources/lang/uk/context/_uk.csv` so you can translate it later using a spreadsheet editor.
 
 *As you see, specifying context in `t()` function can be quite tedious. You can skip it and use default route URI context or set globally (e.g per view)*
 
