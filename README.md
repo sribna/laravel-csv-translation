@@ -64,7 +64,7 @@ This is by default. Say we're at page "product/some-id" which is result of this 
       return view('product');
     });
 
-The expected context file for this route will be `resources/lang/uk/context/product-id.csv`.
+The expected context file for this route will be `resources/lang/uk/context/uri-product-id.csv`.
 
 **Setting context globally**
 
