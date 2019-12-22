@@ -50,7 +50,7 @@ First, LCT will try to find and parse a CSV file for the current context. We hav
 
 Once found and parsed, LCT checks `Hello :user` key in an array of translations. If the key and its value (translation) is set, further processing is stopped and we see the translated string `Привіт, Юра`
 
-If the context file is not found OR doesn't contain `Hello :user` key, LCT will check  "parent" file `resources/lang/uk/context/_uk.csv`, which is a working copy of `resources/lang/uk/uk.csv` (has been copied automatically during translator initialization)
+If the context file is not found OR doesn't contain `Hello :user` key, LCT will check  "parent" file `resources/lang/uk/context/_uk.csv`, which is a working copy of `resources/lang/uk/_uk.csv` (has been copied automatically during translator initialization)
 
 If the parent file doesn't contain `Hello :user` OR its translation isn't set, LCT loads the distributed translation file `resources/lang/uk/uk.csv` (contains all translations for your app) and appends `Hello :user` to `resources/lang/uk/context/user.csv` and `resources/lang/uk/context/_uk.csv` so you can translate it later using a spreadsheet editor.
 
