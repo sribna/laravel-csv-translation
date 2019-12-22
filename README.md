@@ -93,7 +93,7 @@ Blade views:
 
 **Pluralization**
 
-Use `tp()` in regular PHP files and `@tp()` in Blade views. They are equal to Laravel's [trans_choice()](https://laravel.com/docs/5.7/localization#pluralization)
+Use `tp()` in regular PHP files and `@tp()` in Blade views. They are equal to Laravel's [trans_choice()](https://laravel.com/docs/6.x/localization#pluralization)
 
 ## Installation ##
 
