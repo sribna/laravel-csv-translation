@@ -58,7 +58,7 @@ If the parent file doesn't contain `Hello :user` OR its translation isn't set, L
 
 **Route URI context**
 
-This is by default. Say we're at page "product/<some-id>" which is result of this route definition:
+This is by default. Say we're at page "product/some-id" which is result of this route definition:
 
     Route::get('product/{id}', function () {
       return view('product');
