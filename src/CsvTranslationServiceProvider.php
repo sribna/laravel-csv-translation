@@ -74,7 +74,7 @@ class CsvTranslationServiceProvider extends ServiceProvider
                 $context = 'front';
             }
 
-            $translator->context($context);
+            $translator->context("uri-$context");
         });
     }
 

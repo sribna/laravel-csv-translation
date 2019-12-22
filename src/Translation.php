@@ -254,7 +254,7 @@ class Translation
      */
     public function getContextParentFile(): string
     {
-        return $this->getContextDirectory() . "/{$this->locale}.csv";
+        return $this->getContextDirectory() . "/_{$this->locale}.csv";
     }
 
     /**
