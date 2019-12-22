@@ -44,13 +44,14 @@ Set global translation contex:
 Let's see what happens when translating `Hello :user` into ukrainian language
 
 	app()->setLocale('uk'); // Set ukrainian language globally
-    t('Hello :user', ['user' => 'Юра'], 'user');
+    
+    echo t('Hello :user', ['user' => 'Юра'], 'user');
 
 First, LCT will try to find and parse a CSV file for the current context. We have specified "user" so the expected file is `resources/lang/uk/context/user.csv`.
 
-Once found and parsed, LCT checks `Hello :user` key in the array of translations. If the key is set, further processing is stopped and we see the translated string.
+Once found and parsed, LCT checks `Hello :user` key in the array of translations. If key `Hello :user` is set, further processing is stopped and we see a localized text.
 
-Otherwise, LCT will check "parent" file `resources/lang/uk/context/_uk.csv`, which is a working copy of `resources/lang/uk/_uk.csv` (has been copied automatically during translator initialization)
+Otherwise, LCT will check "parent" file `resources/lang/uk/context/_uk.csv`, which is a copy of `resources/lang/uk/_uk.csv` (it has been copied automatically during translator initialization)
 
 If the parent file doesn't contain `Hello :user`, LCT loads the distributed translation file `resources/lang/uk/uk.csv` (contains all translations for your app) and appends `Hello :user` key to `resources/lang/uk/context/user.csv` and `resources/lang/uk/context/_uk.csv` so you can translate it later using a spreadsheet editor.
 
