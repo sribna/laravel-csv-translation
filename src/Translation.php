@@ -195,10 +195,6 @@ class Translation
             return $this->prepared = false;
         }
 
-        if (!$originalFile = $this->getTranslationFile()) {
-            return $this->prepared = false;
-        }
-
         $contextDir = $this->getContextDirectory();
 
         if (!file_exists($contextDir) && !mkdir($contextDir, 0775, true)) {
@@ -217,7 +213,9 @@ class Translation
             throw new RuntimeException("Cannot create directory $parentFileDir");
         }
 
-        if (!copy($originalFile, $parentFile)) {
+        $originalFile = $this->getTranslationFile();
+
+        if (is_file($originalFile) && !copy($originalFile, $parentFile)) {
             throw new RuntimeException("Cannot copy $originalFile to $parentFile");
         }
 
@@ -235,17 +233,11 @@ class Translation
 
     /**
      * Returns a path to a translation file
-     * @return string|bool
+     * @return string
      */
     public function getTranslationFile()
     {
-        $file = $this->getLocaleDirectory() . "/{$this->locale}.csv";
-
-        if (is_file($file) && is_readable($file)) {
-            return $file;
-        }
-
-        return false;
+        return $this->getLocaleDirectory() . "/{$this->locale}.csv";
     }
 
     /**
@@ -364,7 +356,7 @@ class Translation
         $key = "{$context}{$this->locale}";;
 
         if (!isset($files[$key])) {
-            $filename = Str::slug(str_replace('/', '-', $context));
+            $filename = Str::slug($context);
             $directory = $this->getContextDirectory();
             $files[$key] = "$directory/$filename.csv";
         }
